@@ -1,7 +1,7 @@
-package technology.touchmars.algo.leetcode.array
+package technology.touchmars.algo.leetcode.leco442
 
 // https://leetcode.com/problems/find-all-duplicates-in-an-array/#.Xsl8hyJyF1o.link
-class Leco442 {
+class Solution {
     /**
     Given an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
 
@@ -26,11 +26,6 @@ class Leco442 {
                 res.add(Math.abs(it))
         }
         return res
-    }
-
-    fun main() {
-        val leco442 = Leco442()
-        print(leco442.findDuplicates(intArrayOf(1,2,2,3,3,4,5,6)))
     }
 
 }
