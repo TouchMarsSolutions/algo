@@ -1,8 +1,6 @@
 package technology.touchmars.algo.leetcode.leco1281
 
 /**
- * url: https://leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/
- *
     Given an integer number n, return the difference between the product of its digits and the sum of its digits.
 
     Example 1:
@@ -22,12 +20,10 @@ package technology.touchmars.algo.leetcode.leco1281
     Sum of digits = 4 + 4 + 2 + 1 = 11
     Result = 32 - 11 = 21
 
+    Constraints: `1 <= n <= 10^5`
 
-    Constraints:
-
-    1 <= n <= 10^5
+    [_LeetCode1281_](https://leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/)
  */
-
 class Solution {
     fun subtractProductAndSum(n: Int): Int {
         var result = 0
