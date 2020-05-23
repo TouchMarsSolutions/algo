@@ -1,3 +1,5 @@
+package technology.touchmars.algo.leetcode.array
+
 // https://leetcode.com/problems/find-all-duplicates-in-an-array/#.Xsl8hyJyF1o.link
 class Leco442 {
     /**
@@ -26,9 +28,12 @@ class Leco442 {
         return res
     }
 
-    fun main(args: Array<String>) {
-        println("Hello World!")
+    fun main() {
+        val leco442 = Leco442()
+        print(leco442.findDuplicates(intArrayOf(1,2,2,3,3,4,5,6)))
     }
 
-
 }
+
+
+
