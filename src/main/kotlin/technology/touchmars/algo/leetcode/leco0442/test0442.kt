@@ -1,4 +1,4 @@
-package technology.touchmars.algo.leetcode.leco442
+package technology.touchmars.algo.leetcode.leco0442
 
 fun main() {
     val solution = Solution()

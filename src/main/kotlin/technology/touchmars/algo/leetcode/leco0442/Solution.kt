@@ -1,4 +1,4 @@
-package technology.touchmars.algo.leetcode.leco442
+package technology.touchmars.algo.leetcode.leco0442
 
 // https://leetcode.com/problems/find-all-duplicates-in-an-array/#.Xsl8hyJyF1o.link
 class Solution {
