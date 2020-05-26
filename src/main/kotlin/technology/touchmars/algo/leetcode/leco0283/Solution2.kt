@@ -14,20 +14,20 @@ package technology.touchmars.algo.leetcode.leco0283
     You must do this in-place without making a copy of the array.
     Minimize the total number of operations.
  ```
- Method: 2 pointers, DO NOT swap self, be careful of head0 pointer!
+ Method: 2 pointers
  */
-class Solution {
+class Solution2 {
 
     fun moveZeroes(nums: IntArray): Unit {
-        var head0 = 0
+        var head0 = -1
         for ((index, value) in nums.withIndex()) {
-            if (value != 0) {
-                if (index != head0)
-                    swap(nums, head0++, index)
-                else
-                    head0++
+            if (value==0 && head0==-1) {
+                head0 = index
+            }else if (value!=0 && head0!=-1) {
+                swap(nums, head0++, index)
             }
         }
+
     }
 
     private fun swap(nums: IntArray, head0: Int, index: Int) {
