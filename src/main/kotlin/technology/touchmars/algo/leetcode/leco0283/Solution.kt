@@ -21,25 +21,24 @@ class Solution {
     fun moveZeroes(nums: IntArray): Unit {
         var head0 = -1
         nums.forEachIndexed { index, value ->
-                if (value == 0) {
-                    // find the 1st 0
-                    if (head0 == -1) {
-                        head0 = index
-                    }
-                } else {
-                    // throw value to head0 position
-                    // then move head0 forward by 1
-                    // so that subrange [head0, index] should be 0
-                    if (head0 != -1) {
-                        nums[head0++] = value
-                    }
+            if (value == 0) {
+                // find the 1st 0
+                if (head0 == -1) {
+                    head0 = index
                 }
+            } else {
+                // throw value to head0 position
+                // then move head0 forward by 1
+                // so that subrange [head0, index] should be 0
+                if (head0 != -1) {
+                    nums[head0++] = value
+                }
+            }
 
         }
         // if no 0 in the array, head0 will never move!
-        if (head0==-1)
-            return
-        for (index in head0..nums.size-1)
-            nums[index] = 0
+        if (head0!=-1)
+            for (index in head0..nums.size-1)
+                nums[index] = 0
     }
 }

@@ -4,7 +4,7 @@ import java.util.*
 
 fun main() {
     val sol = Solution()
-    val ints = intArrayOf(0,1,2,0,3,4,0)
+    val ints = intArrayOf(1,2,3)
     sol.moveZeroes(ints)
     println(Arrays.toString(ints))
 }
