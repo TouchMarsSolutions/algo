@@ -1,4 +1,4 @@
-package technology.touchmars.algo.leetcode.basic
+package technology.touchmars.algo.basic
 
 class BinarySearch {
     /**
