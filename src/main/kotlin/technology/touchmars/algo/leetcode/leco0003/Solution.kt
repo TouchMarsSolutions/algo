@@ -14,13 +14,11 @@ class Solution {
      * space: `O(256)`
      */
     fun lengthOfLongestSubstring(s: String): Int {
-        if (s.isEmpty())
-            return 0
         val hashIndexes = IntArray(256){-1}
         var l = 0
         var res = 0
-        for (r in s.indices) {
-            val indexR = s[r].toInt()
+        for ((r, value) in s.withIndex()) {
+            val indexR = value.toInt()
             l = max(l, hashIndexes[indexR]+1)
             hashIndexes[indexR] = r
             res = max(res,r-l+1)
