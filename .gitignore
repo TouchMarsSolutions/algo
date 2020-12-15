@@ -7,7 +7,6 @@ dist/
 build/
 generate*
 .mvn/
-.gradle/**/*
 __pycache__/
 *.log
 *.log.*
@@ -34,6 +33,8 @@ www
 *.launch
 .settings/
 *.sublime-workspace
+#.gradle
+.gradletasknamecache
 ### Visual Studio Code ###
 .vscode/
 ### STS ###
