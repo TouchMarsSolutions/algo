@@ -7,6 +7,7 @@ dist/
 build/
 generate*
 .mvn/
+.gradle/**/*
 __pycache__/
 *.log
 *.log.*
