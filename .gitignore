@@ -33,7 +33,7 @@ www
 *.launch
 .settings/
 *.sublime-workspace
-#.gradle
+.gradle
 .gradletasknamecache
 ### Visual Studio Code ###
 .vscode/
