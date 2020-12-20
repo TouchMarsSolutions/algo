@@ -38,7 +38,6 @@ class Solution {
     private fun inc(sCount: IntArray, pos: Int) {
         sCount[pos]++
         if (sCount[pos]==1) numUniqueCharsOfS++
-
     }
 
     private fun dec(sCount: IntArray, pos: Int) {
