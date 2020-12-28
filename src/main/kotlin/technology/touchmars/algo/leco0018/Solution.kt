@@ -10,21 +10,19 @@ class Solution {
         val sol = mutableListOf<List<Int>>()
         val size = nums.size
         if (size<4) return sol
-        val set = hashSetOf<Int>()
-        nums.forEach { set.add(it) }
-        // map{value->1st index}
+        // map for value->1st_index
         val map = mutableMapOf<Int, Int>()
         nums.forEachIndexed { index, it -> if (!map.containsKey(it)) map[it]=index }
-        // since N <= 200, N^2 <= 40000 => build a SUM map is okay!
+        // since N <= 200 => N^2 <= 40000 => okay to build a SUM map!
         val sumMap = mutableMapOf<Int, MutableSet<String>>()
         for (a in 0 until size-1) {
-            for (b in a+1 until nums.size) {
+            for (b in a+1 until size) {
                 val sum = nums[a] + nums[b]
                 if (!sumMap.containsKey(sum)) sumMap[sum] = hashSetOf()
                 sumMap[sum]!!.add("${nums[a]};${nums[b]}")
             }
         }
-        // go into sumMap
+        // iterate keys of sumMap
         for (key in sumMap.keys) {
 
             val comp = target - key
@@ -38,14 +36,13 @@ class Solution {
                     val ab = convert(u)
                     val a = map[ab[0]!!]!!
                     val b = map[ab[1]!!]!!
-                    // b vs c
+                    // b vs c <== we want this order: [a, b, c, d] and a <= b <= c <= d
                     if (b > c) continue
                     else if (b < c) sol.add(listOf(nums[a], nums[b], nums[c], nums[d]))
-                    else { // b==c
+                    else { // b==c so check if a == b == c == d
                         val cntBC = 2 + intArrayOf(a, d).filter { it==b }.size
                         if (b+cntBC-1<size && nums[b+cntBC-1]==nums[b]) sol.add(listOf(nums[a], nums[b], nums[c], nums[d]))
                     }
-
                 }
 
             }
