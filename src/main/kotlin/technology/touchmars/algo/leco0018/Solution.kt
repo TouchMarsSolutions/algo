@@ -2,7 +2,7 @@ package technology.touchmars.algo.leco0018
 
 class Solution {
 
-    private fun convert(v: String): MutableList<Int?> =
+    private fun convert(v: String): List<Int?> =
         v.split(";").map { token -> token.toIntOrNull() }.toCollection(mutableListOf())
 
     fun fourSum(nums: IntArray, target: Int): List<List<Int>> {
