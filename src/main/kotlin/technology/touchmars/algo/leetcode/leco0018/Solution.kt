@@ -1,4 +1,4 @@
-package technology.touchmars.algo.leco0018
+package technology.touchmars.algo.leetcode.leco0018
 
 class Solution {
 

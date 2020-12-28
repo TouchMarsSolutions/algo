@@ -1,4 +1,4 @@
-package technology.touchmars.algo.leco0454
+package technology.touchmars.algo.leetcode.leco0454
 
 class Solution {
     fun fourSumCount(A: IntArray, B: IntArray, C: IntArray, D: IntArray): Int {
