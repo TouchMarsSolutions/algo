@@ -19,9 +19,7 @@ class Solution {
             val solSize = sol.toArray().size
             for(i in 1..solSize) {
                 val d = sol.removeFirst()
-                for (c in chars){
-                    sol.add(d+c)
-                }
+                chars.forEach { c -> sol.add(d+c) }
             }
         }
         return sol
