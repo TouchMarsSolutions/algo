@@ -14,18 +14,17 @@ class Solution {
         val sol = LinkedList<String>()
         if(digits==null || digits.isEmpty()) return sol
         sol.push("")
-        for (d in digits) {
-            val chars = charMap.get(d)!!
-            val solSize = sol.toArray().size
-            for(i in 1..solSize) {
-                val d = sol.removeFirst()
-                chars.forEach { c -> sol.add(d+c) }
+        digits.forEach { d ->
+            run {
+                val chars = charMap[d]!!
+                val solSize = sol.size
+                for (i in 1..solSize) {
+                    val d = sol.removeFirst()
+                    chars.forEach { c -> sol.add(d + c) }
+                }
             }
         }
         return sol
     }
-
-
-
 
 }
