@@ -1,4 +1,4 @@
-package technology.touchmars.algo.leco0686
+package technology.touchmars.algo.leetcode.leco0686
 
 class Solution {
     fun repeatedStringMatch(a: String, b: String): Int {
