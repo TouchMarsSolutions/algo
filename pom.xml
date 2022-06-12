@@ -10,9 +10,9 @@
 	<description>algorithm learning journal - leetcode</description>
 
 	<properties>
-		<java.version>11</java.version>
-		<kotlin.version>1.5.10</kotlin.version>
-		<spring.boot.version>2.6.1</spring.boot.version>
+		<java.version>17</java.version>
+		<kotlin.version>1.7.0</kotlin.version>
+		<spring.boot.version>2.7.0</spring.boot.version>
 	</properties>
 
 	<dependencyManagement>
