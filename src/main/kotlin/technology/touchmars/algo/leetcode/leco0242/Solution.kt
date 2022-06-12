@@ -10,7 +10,7 @@ class Solution {
         }
     }
 
-    private fun getPos(c: Int): Int = c-'a'.toInt()
+    private fun getPos(c: Int): Int = c-'a'.code
 
     private fun isFreqMatched(pFreq: IntArray): Boolean = pFreq.none { f -> f != 0 }
 

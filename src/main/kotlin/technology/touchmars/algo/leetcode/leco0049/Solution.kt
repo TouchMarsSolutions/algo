@@ -5,7 +5,7 @@ class Solution {
     private fun convertInt2String(i: Int) = if (i<10) "0$i" else i
     private fun convertString2Hash(str: String): String {
         val spectrum = IntArray(26)
-        str.chars().forEach { spectrum[it-'a'.toInt()]++ }
+        str.chars().forEach { spectrum[it-'a'.code]++ }
         var hashKey = ""
         spectrum.forEach { i -> hashKey+=convertInt2String(i) }
         return hashKey

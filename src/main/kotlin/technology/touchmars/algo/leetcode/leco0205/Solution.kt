@@ -7,8 +7,8 @@ class Solution {
         val mapS = HashMap<Int, Int>() // map chars from s to t
         val setT = HashSet<Int>() // save occurrence of t
         for (idx in s.indices) {
-            val charS = s[idx].toInt()
-            val charT = t[idx].toInt()
+            val charS = s[idx].code
+            val charT = t[idx].code
             val match = mapS[charS]
             if (match == null) {
                 if (setT.contains(charT)) return false

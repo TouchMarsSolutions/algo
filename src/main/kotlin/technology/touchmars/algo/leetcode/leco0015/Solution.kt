@@ -3,11 +3,11 @@ package technology.touchmars.algo.leetcode.leco0015
 class Solution {
 
     fun initMap(nums: IntArray): Map<Int, MutableList<Int>> {
-        return nums.mapIndexed { index, i -> i to index }.groupByTo(sortedMapOf(), {it.first}, {it.second}) as Map<Int, MutableList<Int>>
+        return nums.mapIndexed { index, i -> i to index }.groupByTo(sortedMapOf(), {it.first}, {it.second}) // as Map<Int, MutableList<Int>>
     }
 
     fun threeSum(nums: IntArray): List<List<Int>> {
-        if (nums==null || nums.size < 3) return listOf()
+        if (nums.size < 3) return listOf()
         val sol = mutableListOf<List<Int>>()
         val map = initMap(nums)
         val keys = map.keys.toIntArray()

@@ -2,7 +2,7 @@ package technology.touchmars.algo.leetcode.leco0290
 
 class Solution {
 
-    private fun numSpaces(s: String): Int = s.chars().filter { c -> c==' '.toInt() }.count().toInt()
+    private fun numSpaces(s: String): Int = s.chars().filter { c -> c==' '.code }.count().toInt()
 
     // time: O(n), space: O(26)+O(26)=O(1)
     fun wordPattern(pattern: String, s: String): Boolean {

@@ -11,7 +11,7 @@ class Solution {
         var cnt = 1
         var v: Int? = curr.`val`
         while(curr!=null) {
-            if (v==curr?.next?.`val`) {
+            if (v==curr.next?.`val`) {
                 curr = curr.next
                 cnt++
             } else { // at end of section

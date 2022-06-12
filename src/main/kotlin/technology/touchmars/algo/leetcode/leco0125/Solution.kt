@@ -13,7 +13,7 @@ class Solution {
             while (start<end && !isLegal(s.get(end))) {
                 end--
             }
-            if (s.get(start).toLowerCase()!=s.get(end).toLowerCase()) 
+            if (s.get(start).lowercaseChar()!=s.get(end).lowercaseChar()) 
                 return false
             start++
             end--

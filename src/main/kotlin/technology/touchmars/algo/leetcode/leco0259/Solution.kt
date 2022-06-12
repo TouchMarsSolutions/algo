@@ -31,7 +31,7 @@ class Solution {
                 val comp = target - 2 * tail - 1
                 if (comp > tail && tail < max) {
                     result += combinatorics(cnt, 2) *
-                            tailMap.tailMap(tail+1).headMap(min(comp, max)+1).values.sumBy { it }
+                            tailMap.tailMap(tail+1).headMap(min(comp, max)+1).values.sumOf { it }
                 }
                 // append::A, B, ? in [B, max]
             }
@@ -47,7 +47,7 @@ class Solution {
                 val comp = target - tail - head - 1
                 if (comp > head && head < max) {
                     result += cnt * cntHead *
-                            headMap.tailMap(head+1).headMap(min(comp, max)+1).values.sumBy { it }
+                            headMap.tailMap(head+1).headMap(min(comp, max)+1).values.sumOf { it }
                 }
             }
             tailMap = map.tailMap(tail+1)

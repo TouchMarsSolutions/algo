@@ -26,7 +26,6 @@ package technology.touchmars.algo.leetcode.leco1281
  */
 class Solution {
     fun subtractProductAndSum(n: Int): Int {
-        var result = 0
         var sum = 0
         var product = 1
         var n1 = n

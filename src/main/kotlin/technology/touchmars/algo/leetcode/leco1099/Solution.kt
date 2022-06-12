@@ -3,7 +3,7 @@ package technology.touchmars.algo.leetcode.leco1099
 class Solution {
 
     fun twoSumLessThanK(nums: IntArray, k: Int): Int {
-        if (nums==null || nums.size < 2) return -1
+        if (nums.size < 2) return -1
         val map = sortedMapOf<Int, Int>()
         nums.forEach { num -> map[num] = 1 + (map[num]?:0) }
         val min = map.keys.first()

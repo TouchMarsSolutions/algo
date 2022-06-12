@@ -16,8 +16,8 @@ class Solution {
     val pCount = IntArray(26)
     val sCount = IntArray(26)
 
-    private fun getPos(charAsciiValue: Int): Int = charAsciiValue - 'a'.toInt()
-    private fun getPos(char: Char): Int = char.toInt() - 'a'.toInt()
+    private fun getPos(charAsciiValue: Int): Int = charAsciiValue - 'a'.code
+    private fun getPos(char: Char): Int = char.code - 'a'.code
 
     private fun initP(p: String) {
         p.chars().forEach { c->
@@ -51,7 +51,7 @@ class Solution {
     }
 
     fun findAnagrams(s: String, p: String): List<Int> {
-        if (s==null || s.length < p.length)
+        if (s.length < p.length)
             return listOf()
         val sol = mutableListOf<Int>()
         initP(p)

@@ -2,9 +2,9 @@ package technology.touchmars.algo.leetcode.leco0167
 
 class Solution {
     fun twoSum(numbers: IntArray, target: Int): IntArray {
-        if(numbers==null || numbers!!.size<2) return intArrayOf()
+        if(numbers.size<2) return intArrayOf()
         var tail=0
-        var head=numbers!!.size-1
+        var head=numbers.size-1
         while (tail < head) {
             val sum = numbers[tail] + numbers[head]
             when {

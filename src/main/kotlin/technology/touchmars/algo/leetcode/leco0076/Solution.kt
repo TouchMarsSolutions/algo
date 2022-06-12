@@ -23,13 +23,13 @@ class Solution {
     private var numMatchedCharsOfS = 0
 
     private fun getPos(charAsciiValue: Int): Int =
-        if (charAsciiValue < 'a'.toInt()) {
-            charAsciiValue - 'A'.toInt()
+        if (charAsciiValue < 'a'.code) {
+            charAsciiValue - 'A'.code
         } else {
-            charAsciiValue - 'a'.toInt() + 26
+            charAsciiValue - 'a'.code + 26
         }
 
-    private fun getPos(char: Char): Int = getPos(char.toInt())
+    private fun getPos(char: Char): Int = getPos(char.code)
 
     private fun initP(p: String) {
         p.chars().forEach { c->
@@ -47,7 +47,7 @@ class Solution {
     }
 
     private fun isValid(c: Int) = pCount[getPos(c)] > 0
-    private fun isValid(c: Char) = isValid(c.toInt())
+    private fun isValid(c: Char) = isValid(c.code)
 
     private fun inc(sCount: IntArray, pos: Int) {
         sCount[pos]++
