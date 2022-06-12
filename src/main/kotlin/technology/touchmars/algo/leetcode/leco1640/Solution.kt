@@ -4,7 +4,7 @@ class Solution {
     fun canFormArray(arr: IntArray, pieces: Array<IntArray>): Boolean {
         val map = mutableMapOf<Int, Int>()
         for ((idx,list) in pieces.withIndex()) {
-            if (list==null || list.isEmpty()) continue
+            if (list.isEmpty()) continue
             map[list[0]] = idx
         }
         var idx = 0
