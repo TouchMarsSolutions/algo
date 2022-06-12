@@ -7,7 +7,7 @@ class Solution {
     // pre-condition: 1 solution
     fun threeSumClosest(nums: IntArray, target: Int): Int {
         nums.sort()
-        var sol = intArrayOf(0,1,2).map { nums[it] }.sumBy { it }
+        var sol = intArrayOf(0,1,2).map { nums[it] }.sumOf { it }
         for ((idx, num) in nums.withIndex()) {
             var tail = idx+1
             var head = nums.size-1
