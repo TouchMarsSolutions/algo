@@ -77,6 +77,28 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<plugin>
+				<groupId>org.jetbrains.dokka</groupId>
+				<artifactId>dokka-maven-plugin</artifactId>
+				<version>1.7.20</version>
+				<executions>
+					<execution>
+						<phase>pre-site</phase>
+						<goals>
+							<goal>dokka</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<dokkaPlugins>
+						<plugin>
+							<groupId>org.jetbrains.dokka</groupId>
+							<artifactId>gfm-plugin</artifactId>
+							<version>1.7.20</version>
+						</plugin>
+					</dokkaPlugins>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
