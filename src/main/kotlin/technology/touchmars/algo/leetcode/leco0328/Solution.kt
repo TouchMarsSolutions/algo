@@ -24,7 +24,7 @@ class Solution {
         while (next!!.next != null) {
             val curr = next
             next = next.next
-            curr.next = next.next
+            curr.next = next!!.next
             if (index % 2 == 1) {
                 oddTail = curr.next ?: curr
             }
