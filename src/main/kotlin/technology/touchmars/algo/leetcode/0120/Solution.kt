@@ -27,11 +27,16 @@ class Solution {
         for (row in 1 until height) {
             val t = triangle[row]
             val path = mutableListOf<Int>()
-            path.add(t[0] + lastRow[0])
-            for (col in 1 until t.size - 1) {
+
+            var col = 0
+            path.add(t[col] + lastRow[col])
+            col++
+            while (col < t.size - 1) {
                 path.add(t[col] + Math.min(lastRow[col - 1], lastRow[col]))
+                col++
             }
-            path.add(t[t.size-1] + lastRow[lastRow.size-1])
+            path.add(t[col] + lastRow[lastRow.size-1])
+
             paths.add(path)
             lastRow = path
         }
