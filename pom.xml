@@ -13,6 +13,7 @@
 		<java.version>17</java.version>
 		<kotlin.version>1.8.0</kotlin.version>
 		<spring.boot.version>2.7.8</spring.boot.version>
+		<dokka.version>1.7.20</dokka.version>
 	</properties>
 
 	<dependencyManagement>
@@ -115,7 +116,7 @@
 			<plugin>
 				<groupId>org.jetbrains.dokka</groupId>
 				<artifactId>dokka-maven-plugin</artifactId>
-				<version>1.7.20</version>
+				<version>${dokka.version}</version>
 				<executions>
 					<execution>
 						<phase>pre-site</phase>
@@ -129,7 +130,7 @@
 						<plugin>
 							<groupId>org.jetbrains.dokka</groupId>
 							<artifactId>gfm-plugin</artifactId>
-							<version>1.7.20</version>
+							<version>${dokka.version}</version>
 						</plugin>
 					</dokkaPlugins>
 				</configuration>

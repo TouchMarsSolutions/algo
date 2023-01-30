@@ -1,4 +1,4 @@
-package technology.touchmars.algo.leetcode.leco0053
+package technology.touchmars.algo.leetcode.`0053`
 
 /**
  * [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)

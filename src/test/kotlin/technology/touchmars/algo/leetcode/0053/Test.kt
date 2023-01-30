@@ -1,4 +1,4 @@
-package technology.touchmars.algo.leetcode.leco0053
+package technology.touchmars.algo.leetcode.`0053`
 
 import kotlin.test.assertEquals
 import kotlin.test.Test
