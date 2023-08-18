@@ -2,46 +2,53 @@ package technology.touchmars.algo.leetcode.q0015
 
 class Solution {
 
-    fun initMap(nums: IntArray): Map<Int, MutableList<Int>> {
-        return nums.mapIndexed { index, i -> i to index }.groupByTo(sortedMapOf(), {it.first}, {it.second}) // as Map<Int, MutableList<Int>>
+    fun threeSum(nums: IntArray): List<List<Int>> {
+        nums.sort()
+        return kSum(nums, 0, 0, 3)
     }
 
-    fun threeSum(nums: IntArray): List<List<Int>> {
-        if (nums.size < 3) return listOf()
+    fun kSum(nums: IntArray, target: Int, start: Int, k: Int): List<List<Int>> {
+        val length = nums.size
+        if (start >= length) return listOf()
+        if (length - start < k) return listOf()
+        if (k<2) return listOf()
+        if (k==2) return twoSum(nums, target, start)
         val sol = mutableListOf<List<Int>>()
-        val map = initMap(nums)
-        val keys = map.keys.toIntArray()
-        val min = keys.first()
-        val max = keys.last()
-        // all positive
-        if (min > 0 && max > 0) return sol
-        // all negative
-        if (min < 0 && max < 0) return sol
-        // has zero
-        var has0 = false
-        if (map[0]!=null) {
-            has0 = true
-            if (map[0]!!.size >= 3) sol.add(listOf(0, 0, 0))
+        for (idx in start until length-k+1) {
+            val value = nums[idx]
+            if (idx > start && value==nums[idx-1]) continue
+            val prevSol = kSum(nums, target-value, idx+1, k-1)
+            prevSol.forEach { addNewTuple(sol, nums, it, value) }
         }
-        for ((idx, numA) in keys.withIndex()) {
-            if (numA >= 0) break
-            // -A, -A, +2A
-            if (map[numA]!!.size>=2 && map[-2*numA]!=null) sol.add(listOf(numA, numA, -2*numA))
-            // -A, 0, A
-            if (has0 && map[-numA]!=null) sol.add(listOf(numA, 0, -numA))
-            // -A(even), +A/2, +A/2
-            if (numA%2==0 && map[-numA/2]!=null && map[-numA/2]!!.size >=2) sol.add(listOf(numA, -numA/2, -numA/2))
-            // -A < -B|+B, +C
-            var idxB = idx + 1
-            var numB = keys[idxB]
-            var numC = 0-numA-numB
-            while(numB <= 0-numA/2 && numB < numC && numB < max) {
-                if (numB!=0 && numC <= max && map[numC] != null) sol.add(listOf(numA, numB, numC))
-                numB = keys[++idxB]
-                numC = 0-numA-numB
+        return sol
+    }
+
+    private fun addNewTuple(sol: MutableList<List<Int>>, nums: IntArray, tuple: List<Int>, value: Int) {
+        val newTuple = mutableListOf<Int>()
+        newTuple.add(value)
+        newTuple.addAll(tuple)
+        sol.add(newTuple)
+    }
+
+    fun twoSum(nums: IntArray, target: Int, start: Int): List<List<Int>> {
+        var left = start
+        var rite = nums.size-1
+        val sol = mutableListOf<List<Int>>()
+        while (left < rite) {
+            val sum = nums[left] + nums[rite]
+            when {
+                sum == target -> {
+                    sol.add(listOf(nums[left], nums[rite]))
+                    while (left < rite && nums[left]==nums[left+1]) left++
+                    while (left < rite && nums[rite]==nums[rite-1]) rite--
+                    left++
+                    rite--
+                }
+                sum < target -> left++
+                else -> rite--
             }
         }
-        return if (sol.isEmpty())  listOf() else sol
+        return sol
     }
 
 }
