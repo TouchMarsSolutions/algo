@@ -2,8 +2,6 @@ package technology.touchmars.algo.leetcode.q0025
 import technology.touchmars.algo.basic.ListNode
 class Solution {
     /**
-     * Reverse a link list between pre and next exclusively
-     * an example:
      * a linked list:
      * 0->1->2->3->4->5->6
      * |           |
