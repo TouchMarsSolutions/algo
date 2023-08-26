@@ -11,21 +11,24 @@ class Solution {
      * 0->3->2->1->4->5->6
      *          |  |
      *          pre next
-     * @param pre
-     * @param next
-     * @return the reversed list's last node, which is the precedence of parameter next
+     * @param preHead the previous node of the first node to be reversed
+     * @param k up to the number of nodes to be reversed
+     * @return the reversed list's last node, which is the precedence of parameter next, and the number of nodes reversed
      */
-    private fun reverse(pre: ListNode?, k: Int): Pair<ListNode?, Int> {
-        val first = pre?.next // This node will become the last node after reversal
+    private fun reverse(preHead: ListNode?, k: Int): Pair<ListNode?, Int> {
+        val first = preHead?.next
         var cur = first?.next
+        var prev = first
         var cnt = 1
         while (cnt < k && cur != null) {
-            first?.next = cur.next
-            cur.next = pre?.next
-            pre?.next = cur
-            cur = first?.next
+            val next = cur.next
+            cur.next = prev
+            prev = cur
+            cur = next
             cnt++
         }
+        preHead?.next = prev
+        first?.next = cur
         return Pair(first, cnt)
     }
 
@@ -45,6 +48,21 @@ class Solution {
             }
         }
         return dummy.next
+    }
+
+    private fun reverse2(preHead: ListNode?, k: Int): Pair<ListNode?, Int> {
+        val first = preHead?.next
+        var cur = first?.next
+        var cnt = 1
+        while (cnt < k && cur != null) {
+            val next = cur.next
+            first?.next = next
+            cur.next = preHead?.next
+            preHead?.next = cur
+            cur = first?.next
+            cnt++
+        }
+        return Pair(first, cnt)
     }
 
 }
