@@ -28,7 +28,7 @@ class Solution {
         return preHead.next
     }
 
-    private inline operator fun ListNode.compareTo(other: ListNode): Int {
+    private operator fun ListNode.compareTo(other: ListNode): Int {
         return this.`val` - other.`val`
     }
 
