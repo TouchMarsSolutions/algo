@@ -8,8 +8,7 @@ class Solution {
     fun inorderTraversal(root: TreeNode?): List<Int> {
         if (root==null) return emptyList()
         val sol = mutableListOf<Int>()
-        val stack = Stack<TreeNode>()
-        stack.push(root)
+        val stack = Stack<TreeNode>().apply { push(root)}
         while (stack.isNotEmpty()) {
             val node = stack.pop()
             if (node.left==null && node.right==null) sol.add(node.`val`)
