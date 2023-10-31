@@ -8,8 +8,7 @@ class Solution {
     fun preorderTraversal(root: TreeNode?): List<Int> {
         if (root==null) return emptyList()
         val sol = mutableListOf<Int>()
-        val stack = Stack<TreeNode>()
-        stack.push(root)
+        val stack = Stack<TreeNode>().apply { push(root)}
         while (stack.isNotEmpty()) {
             val node = stack.pop()
             // leaf goto sol
