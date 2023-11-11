@@ -53,7 +53,6 @@ class Solution {
                 val step = stepMap[p]!!
                 // find neighbor/child from otherStepMap
                 // TODO: visiting the leaf level is optimized? is it possible to find neighbor in non-leaf level?
-                // TODO: guess so, but how?
                 otherStepMap.forEach { (w, s) ->
                     if (similar(p, w)) {
                         return step + s
