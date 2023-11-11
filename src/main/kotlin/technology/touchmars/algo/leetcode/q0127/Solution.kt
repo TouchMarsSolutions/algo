@@ -47,18 +47,14 @@ class Solution {
             val queue = toVisit.first
             val qSize = queue.size
             val stepMap = toVisit.second
+            val otherQueue = if (queue === qStart) qEnd else qStart
             val otherStepMap = if (stepMap === stepStart) stepEnd else stepStart
             for (i in 0 until qSize) {
                 val p = queue.poll()
                 val step = stepMap[p]!!
-                // find neighbor/child from otherStepMap
-                // TODO: visiting the leaf level is optimized? is it possible to find neighbor in non-leaf level?
-                otherStepMap.forEach { (w, s) ->
-                    if (similar(p, w)) {
-                        return step + s
-                    }
-                }
-                // loop thru remaining wordSet
+                // optimized: visit the leaf level of the other side
+                otherQueue.find { similar(p, it) }?.let { return step + otherStepMap[it]!! }
+                // loop thru remaining wordSet, remove the visited ones
                 val toRemove = mutableSetOf<String>()
                 wordSet.filterTo(mutableSetOf()) { similar(p, it) }.onEach {
                     if (it in otherStepMap) {
