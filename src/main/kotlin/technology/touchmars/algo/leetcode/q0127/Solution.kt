@@ -54,17 +54,15 @@ class Solution {
                 val step = stepMap[p]!!
                 // optimized: visit the leaf level of the other side
                 otherQueue.find { similar(p, it) }?.let { return step + otherStepMap[it]!! }
-                // loop thru remaining wordSet, remove the visited ones
-                val toRemove = mutableSetOf<String>()
-                wordSet.filterTo(mutableSetOf()) { similar(p, it) }.onEach {
-                    if (it in otherStepMap) {
+                val toRemove = wordSet.filter {
+                    similar(p, it) && if (it in otherStepMap) {
                         return step + otherStepMap[it]!!
-                    } else if (it !in stepMap) {
-                        queue.add(it)
-                        stepMap[it] = step + 1
-                        toRemove.add(it)
-                    }
-                }.apply { removeAll(toRemove) }
+                    } else it !in stepMap
+                }.onEach {
+                    queue.add(it)
+                    stepMap[it] = step + 1
+                }.toSet()
+                wordSet.removeAll(toRemove)
             }
 
         }
