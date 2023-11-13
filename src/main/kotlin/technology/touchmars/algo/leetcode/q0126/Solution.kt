@@ -21,59 +21,16 @@ class Solution {
         return shortestPaths
     }
 
-    private fun findNeighbors(word: String, wordSet: Set<String>) = wordSet.filter { similar(word, it) }.toMutableSet()
-
-    private fun similar(word1: String, word2: String): Boolean {
-        var diff = 0
-        return word1.indices.any { word1[it] != word2[it] && ++diff > 1 }.not() && diff == 1
-    }
-
-    private fun backtrack(source: String, destination: String) {
-        // store the path if we reached the endWord
-        if (source == destination) {
-            val tempPath = ArrayList(currPath)
-            shortestPaths.add(tempPath)
-        }
-        if (!adjList.containsKey(source)) {
-            return
-        }
-        for (i in adjList[source]!!.indices) {
-            currPath.add(adjList[source]!![i])
-            backtrack(adjList[source]!![i], destination)
-            currPath.removeAt(currPath.size - 1)
-        }
-    }
-
-    private fun addEdge(word1: String, word2: String, direction: Int) {
-        if (direction == 1) {
-            if (!adjList.containsKey(word1)) {
-                adjList[word1] = ArrayList()
-            }
-            adjList[word1]!!.add(word2)
-        } else {
-            if (!adjList.containsKey(word2)) {
-                adjList[word2] = ArrayList()
-            }
-            adjList[word2]!!.add(word1)
-        }
-    }
-
     private fun bfs(beginWord: String, endWord: String, wordSet: MutableSet<String>): Boolean {
-        if (!wordSet.contains(endWord)) return false
 
-        // remove the root word which is the first layer
-        if (wordSet.contains(beginWord)) {
-            wordSet.remove(beginWord)
-        }
-        var forwardQueue: MutableSet<String> = HashSet()
-        var backwardQueue: MutableSet<String> = HashSet()
-        forwardQueue.add(beginWord)
-        backwardQueue.add(endWord)
+        var forwardQueue: MutableSet<String> = mutableSetOf(beginWord)
+        var backwardQueue: MutableSet<String> = mutableSetOf(endWord)
         var found = false
         var direction = 1
+
         while (forwardQueue.isNotEmpty()) {
             // visited will store the words of current layer
-            val visited: MutableSet<String> = HashSet()
+            val visited = mutableSetOf<String>()
 
             // swap the queues because we are always extending the forwardQueue
             if (forwardQueue.size > backwardQueue.size) {
@@ -108,6 +65,43 @@ class Solution {
             forwardQueue = visited
         }
         return found
+    }
+
+    private fun backtrack(source: String, destination: String) {
+        // store the path if we reached the endWord
+        if (source == destination) {
+            val tempPath = ArrayList(currPath)
+            shortestPaths.add(tempPath)
+        }
+        if (!adjList.containsKey(source)) {
+            return
+        }
+        for (i in adjList[source]!!.indices) {
+            currPath.add(adjList[source]!![i])
+            backtrack(adjList[source]!![i], destination)
+            currPath.removeAt(currPath.size - 1)
+        }
+    }
+
+    private fun addEdge(word1: String, word2: String, direction: Int) {
+        if (direction == 1) {
+            if (!adjList.containsKey(word1)) {
+                adjList[word1] = ArrayList()
+            }
+            adjList[word1]!!.add(word2)
+        } else {
+            if (!adjList.containsKey(word2)) {
+                adjList[word2] = ArrayList()
+            }
+            adjList[word2]!!.add(word1)
+        }
+    }
+
+    private fun findNeighbors(word: String, wordSet: Set<String>) = wordSet.filter { similar(word, it) }.toMutableSet()
+
+    private fun similar(word1: String, word2: String): Boolean {
+        var diff = 0
+        return word1.indices.any { word1[it] != word2[it] && ++diff > 1 }.not() && diff == 1
     }
 
 }
