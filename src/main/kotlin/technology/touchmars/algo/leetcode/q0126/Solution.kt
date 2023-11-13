@@ -23,52 +23,38 @@ class Solution {
 
     private fun bfs(beginWord: String, endWord: String, wordSet: MutableSet<String>): Boolean {
 
-        var forwardQueue: MutableSet<String> = mutableSetOf(beginWord)
-        var backwardQueue: MutableSet<String> = mutableSetOf(endWord)
+        val qStart = mutableSetOf(beginWord)
+        val qEnd = mutableSetOf(endWord)
         var found = false
-        var direction = 1
+        var toVisit = Triple(qStart, qEnd, 1)
 
-        while (forwardQueue.isNotEmpty()) {
-            // visited will store the words of current layer
+        while (toVisit.first.isNotEmpty()) {
+            if (qStart.size > qEnd.size) toVisit = Triple(qEnd, qStart, 0)
+            val q = toVisit.first
+            val otherQ = toVisit.second
+            val dir = toVisit.third
             val visited = mutableSetOf<String>()
-
-            // swap the queues because we are always extending the forwardQueue
-            if (forwardQueue.size > backwardQueue.size) {
-                val temp = forwardQueue
-                forwardQueue = backwardQueue
-                backwardQueue = temp
-                direction = direction xor 1
-            }
-            for (currWord in forwardQueue) {
-                val neighbors = findNeighbors(currWord, wordSet)
+            for (w in q) {
+                val neighbors = findNeighbors(w, wordSet)
                 for (word in neighbors) {
-                    // if the backwardQueue already contains it we can stop after completing this level
-                    if (backwardQueue.contains(word)) {
+                    if (otherQ.contains(word)) {
                         found = true
-                        addEdge(currWord, word, direction)
-                    } else if (!found && wordSet.contains(word) && !forwardQueue.contains(word)) {
+                        addEdge(w, word, dir)
+                    } else if (!found && wordSet.contains(word) && !q.contains(word)) {
                         visited.add(word)
-                        addEdge(currWord, word, direction)
+                        addEdge(w, word, dir)
                     }
                 }
             }
-
-            // removing the words of the previous layer
-            for (currWord in forwardQueue) {
-                if (wordSet.contains(currWord)) {
-                    wordSet.remove(currWord)
-                }
-            }
-            if (found) {
-                break
-            }
-            forwardQueue = visited
+            q.forEach { wordSet.remove(it) }
+            if (found) break
+            q.apply { clear() }.addAll(visited)
         }
         return found
+
     }
 
     private fun backtrack(source: String, destination: String) {
-        // store the path if we reached the endWord
         if (source == destination) {
             val tempPath = ArrayList(currPath)
             shortestPaths.add(tempPath)
