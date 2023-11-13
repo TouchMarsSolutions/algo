@@ -36,13 +36,13 @@ class Solution {
             val visited = mutableSetOf<String>()
             for (w in q) {
                 val neighbors = findNeighbors(w, wordSet)
-                for (word in neighbors) {
-                    if (otherQ.contains(word)) {
+                for (child in neighbors) {
+                    if (otherQ.contains(child)) {
                         found = true
-                        addEdge(w, word, dir)
-                    } else if (!found && wordSet.contains(word) && !q.contains(word)) {
-                        visited.add(word)
-                        addEdge(w, word, dir)
+                        addEdge(w, child, dir)
+                    } else if (!found && wordSet.contains(child) && !q.contains(child)) {
+                        visited.add(child)
+                        addEdge(w, child, dir)
                     }
                 }
             }
