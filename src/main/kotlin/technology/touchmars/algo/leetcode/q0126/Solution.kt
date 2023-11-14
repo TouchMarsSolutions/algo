@@ -8,15 +8,10 @@ class Solution {
 
     fun findLadders(beginWord: String, endWord: String, wordList: List<String>?): List<List<String>> {
         val wordSet = wordList?.toMutableSet() ?: mutableSetOf()
-        // copying the words into the set for efficient deletion in BFS
         if (wordSet.isEmpty() || !wordSet.contains(endWord)) return shortestPaths
-        // build the DAG using BFS
         val bfs = bfs(beginWord, endWord, wordSet)
-        // There is no valid sequence that connects `beginWord` to `endWord`
         if (!bfs) return shortestPaths
-        // every path will start from the beginWord
         currPath.add(beginWord)
-        // traverse the DAG to find all the paths between beginWord and endWord
         backtrack(beginWord, endWord)
         return shortestPaths
     }
