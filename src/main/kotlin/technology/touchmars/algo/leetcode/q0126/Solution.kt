@@ -56,16 +56,14 @@ class Solution {
 
     private fun backtrack(source: String, destination: String) {
         if (source == destination) {
-            val tempPath = ArrayList(currPath)
-            shortestPaths.add(tempPath)
-        }
-        if (!adjList.containsKey(source)) {
+            shortestPaths.add(ArrayList(currPath))
             return
         }
-        for (i in adjList[source]!!.indices) {
-            currPath.add(adjList[source]!![i])
-            backtrack(adjList[source]!![i], destination)
-            currPath.removeAt(currPath.size - 1)
+
+        adjList[source]?.forEach {
+            currPath.add(it)
+            backtrack(it, destination)
+            currPath.removeLast()
         }
     }
 
