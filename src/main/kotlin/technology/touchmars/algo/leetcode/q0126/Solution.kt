@@ -63,7 +63,7 @@ class Solution {
         adjList[source]?.forEach {
             currPath.add(it)
             backtrack(it, destination)
-            currPath.removeLast()
+            currPath.removeLast() // it
         }
     }
 
