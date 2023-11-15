@@ -5,7 +5,7 @@ import technology.touchmars.algo.basic.TreeNode
 class Solution {
 
     fun invertTree(root: TreeNode?): TreeNode? {
-        if (root?.left==null && root?.right==null) return root
+        if (root==null) return root
         invertTree(root.left)
         invertTree(root.right)
         swapSubtree(root)
