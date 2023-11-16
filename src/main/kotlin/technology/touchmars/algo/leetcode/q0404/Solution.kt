@@ -8,8 +8,7 @@ class Solution {
         if (root == null) return 0
         val left = root.left
         val rite = root.right
-        if (left!=null && isLeaf(left)) return left.`val`+sumOfLeftLeaves(rite)
-        return sumOfLeftLeaves(left) + sumOfLeftLeaves(rite)
+        return sumOfLeftLeaves(rite) + if (left!=null && isLeaf(left)) left.`val` else sumOfLeftLeaves(left)
     }
 
     private fun isLeaf(node: TreeNode) = node.left==null && node.right == null
