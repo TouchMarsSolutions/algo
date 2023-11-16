@@ -8,12 +8,13 @@ if [[ $1 =~ ^[0-9]{4}$ ]]; then
       echo "Directory $dir_name already exists!"
   else
     mkdir -p "$dir_name"
-    echo "package technology.touchmars.algo.leetcode.q$1
+  fi
 
+  echo "package technology.touchmars.algo.leetcode.q$1
 class Solution {
 
 }" > "$class_file"
-  fi
+
   open "$class_file"
 if [ "$2" == "t" ]; then
     ./t $1
