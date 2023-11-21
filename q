@@ -1,7 +1,8 @@
 #!/bin/sh
 
-if [[ $1 =~ ^[0-9]{4}$ ]]; then
-  dir_name="src/main/kotlin/technology/touchmars/algo/leetcode/q$1"
+if [[ $1 =~ ^[0-9]{1,4}$ ]]; then
+  formatted_number=$(printf "%04d" $1)
+  dir_name="src/main/kotlin/technology/touchmars/algo/leetcode/q$formatted_number"
   class_file="$dir_name/Solution.kt"
 
   if [ -d "$dir_name" ]; then
@@ -10,15 +11,26 @@ if [[ $1 =~ ^[0-9]{4}$ ]]; then
     mkdir -p "$dir_name"
   fi
 
-  echo "package technology.touchmars.algo.leetcode.q$1
+  content="package technology.touchmars.algo.leetcode.q$formatted_number"
+  if [ "$2" == "tree" ]; then
+  content="$content
+import technology.touchmars.algo.basic.TreeNode"
+  fi
+
+  content="$content
+
 class Solution {
 
-}" > "$class_file"
+
+
+}"
+
+  echo "$content" > "$class_file"
 
   open "$class_file"
 if [ "$2" == "t" ]; then
     ./t $1
 fi
 else
-  echo "Error: Argument must be a 4-digit number, or t followed by 4 digits."
+  echo "Error: Argument must be a 1-4 digits, [and tree if class requires TreeNode], [or t followed indicator to create testcase]."
 fi
