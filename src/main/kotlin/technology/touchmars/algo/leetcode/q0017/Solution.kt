@@ -15,13 +15,9 @@ class Solution {
         if(digits.isEmpty()) return sol
         sol.push("")
         digits.forEach { d ->
-            run {
-                val chars = charMap[d]!!
-                val solSize = sol.size
-                for (i in 1..solSize) {
-                    val g = sol.removeFirst()
-                    chars.forEach { c -> sol.add(g + c) }
-                }
+            val chars = charMap[d]!!
+            repeat(sol.size) {
+                sol.addAll(sol.removeFirst().let { g -> chars.map { c -> g + c } })
             }
         }
         return sol
