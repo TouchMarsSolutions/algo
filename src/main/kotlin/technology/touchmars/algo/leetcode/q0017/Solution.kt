@@ -1,7 +1,5 @@
 package technology.touchmars.algo.leetcode.q0017
 
-import java.util.*
-
 class Solution {
 
     companion object {
@@ -11,9 +9,9 @@ class Solution {
     }
 
     fun letterCombinations(digits: String): List<String> {
-        val sol = LinkedList<String>()
+        val sol = mutableListOf<String>()
         if(digits.isEmpty()) return sol
-        sol.push("")
+        sol.add("")
         digits.forEach { d ->
             val chars = charMap[d]!!
             repeat(sol.size) {
