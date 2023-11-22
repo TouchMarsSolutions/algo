@@ -12,12 +12,16 @@ class Solution {
             key < rv -> root.left = deleteNode(left, key)
             key > rv -> root.right = deleteNode(rite, key)
             else -> {
-                if (isLeaf(root)) return null
-                if (left==null) return rite
-                if (rite==null) return left
-                val min = findMin(rite)
-                root.`val` = min.`val`
-                root.right = deleteNode(rite, min.`val`)
+                when {
+                    isLeaf(root) -> return null
+                    left == null -> return rite
+                    rite == null -> return left
+                    else -> {
+                        val min = findMin(rite)
+                        root.`val` = min.`val`
+                        root.right = deleteNode(rite, min.`val`)
+                    }
+                }
             }
         }
         return root
