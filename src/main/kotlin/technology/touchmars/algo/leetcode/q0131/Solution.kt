@@ -19,12 +19,8 @@ class Solution {
     }
 
     private fun isPalindrome(s: String, start: Int, end: Int): Boolean {
-        var i = start
-        var j = end
-        while (i<j) {
-            if (s[i++]!=s[j--]) return false
-        }
-        return true
+        val sub = s.substring(start, end + 1)
+        return sub == sub.reversed()
     }
 
 }
