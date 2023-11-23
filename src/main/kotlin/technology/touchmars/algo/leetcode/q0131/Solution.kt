@@ -16,9 +16,6 @@ class Solution {
         }
     }
 
-    private fun isPalindrome(s: String, start: Int, end: Int): Boolean {
-        val sub = s.substring(start, end + 1)
-        return sub == sub.reversed()
-    }
+    private fun isPalindrome(s: String, start: Int, end: Int) = s.substring(start, end + 1).let { it == it.reversed() }
 
 }
