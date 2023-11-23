@@ -9,12 +9,10 @@ class Solution {
 
     private fun dfs(s: String, start: Int, list: MutableList<String>, sol: MutableList<List<String>>) {
         sol.takeIf { start==s.length }?.add(list.toList())?.let { return }
-        for (end in start until s.length) {
-            if (isPalindrome(s, start, end)) {
-                list.add(s.substring(start, end+1))
-                dfs(s, end+1, list, sol)
-                list.removeLast()
-            }
+        (start until s.length).filter { isPalindrome(s, start, it) }.forEach { end ->
+            list.add(s.substring(start, end+1))
+            dfs(s, end+1, list, sol)
+            list.removeLast()
         }
     }
 
